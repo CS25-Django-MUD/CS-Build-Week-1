@@ -7,3 +7,4 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api/adv/', include('adventure.urls')),
 ]
+

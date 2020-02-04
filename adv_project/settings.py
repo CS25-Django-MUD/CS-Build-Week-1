@@ -97,8 +97,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-DATABASES['default'] = dj_database_url.config('DATABASE_URL')
+DB_FROM_ENV = dj_database_url.config('DATABASE_URL', conn_max_age=600)
+DATABASES['default'].update(DB_FROM_ENV)
+#  = dj_database_url.config('DATABASE_URL', conn_max_age=600)
 
 
 # Password validation

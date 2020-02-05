@@ -163,9 +163,9 @@ def create_world():
 
     w.generate_rooms(width, height, num_rooms)
     w.print_rooms()
+    print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {num_rooms}\n")
     return w
     
 
 
 
-print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {num_rooms}\n")

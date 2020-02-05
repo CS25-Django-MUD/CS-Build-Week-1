@@ -10,8 +10,8 @@ urlpatterns = [
     url('say', api.say),
     url('home', onetime.home),
 ]
-create_world()
-onetime.onetimer()
+# create_world()
+# onetime.onetimer()
 
 
 

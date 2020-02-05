@@ -12,6 +12,8 @@ class Room(models.Model):
     s_to = models.IntegerField(default=0)
     e_to = models.IntegerField(default=0)
     w_to = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
         try:
@@ -41,6 +43,8 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     currentRoom = models.IntegerField(default=0)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     def initialize(self):
         if self.currentRoom == 0:
             self.currentRoom = Room.objects.first().id

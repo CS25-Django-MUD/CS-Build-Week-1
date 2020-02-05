@@ -5,10 +5,10 @@ from adventure.models import Player, Room
 Room.objects.all().delete()
 
 r_outside = Room(title="Outside Cave Entrance",
-              description="North of you, the cave mount beckons")
+              description="North of you, the cave mount beckons", x=0, y=0)
 
 r_foyer = Room(title="Foyer", description="""Dim light filters in from the south. Dusty
-passages run north and east.""")
+passages run north and east.""", x=0, y=1)
 
 r_overlook = Room(title="Grand Overlook", description="""A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in

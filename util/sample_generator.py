@@ -5,6 +5,10 @@
 # procedural generation algorithm and use print_rooms()
 # to see the world.
 
+import sys
+sys.path.append('../adventure')
+from .adventure import Room as Room_m
+
 class Room:
     def __init__(self, id, name, description, x, y):
         self.id = id
@@ -80,8 +84,8 @@ class World:
             # Create a room in the given direction
             import random
             num = random.choice(range(0,5))
-            room = Room(room_count, room_titles[num], room_descriptions[num], x, y)
-            room.save()
+            room = Room_m(room_count, room_titles[num], room_descriptions[num], x, y)
+            room.objects.save()
             self.grid[y][x] = room
             if previous_room is not None:
                 previous_room.connect_rooms(room, room_direction)

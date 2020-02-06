@@ -7,39 +7,39 @@
 
 import sys
 sys.path.append('../adventure')
-from .adventure import Room as Room_m
+from .adventure import Room
 
-class Room:
-    def __init__(self, id, name, description, x, y):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.n_to = None
-        self.s_to = None
-        self.e_to = None
-        self.w_to = None
-        self.x = x
-        self.y = y
+# class Room:
+#     def __init__(self, id, name, description, x, y):
+#         self.id = id
+#         self.name = name
+#         self.description = description
+#         self.n_to = None
+#         self.s_to = None
+#         self.e_to = None
+#         self.w_to = None
+#         self.x = x
+#         self.y = y
 
-    def __repr__(self):
-        if self.e_to is not None:
-            return f"({self.x}, {self.y}) -> ({self.e_to.x}, {self.e_to.y})"
-        return f"({self.x}, {self.y})"
+#     def __repr__(self):
+#         if self.e_to is not None:
+#             return f"({self.x}, {self.y}) -> ({self.e_to.x}, {self.e_to.y})"
+#         return f"({self.x}, {self.y})"
         
-    def connect_rooms(self, connecting_room, direction):
-        '''
-        Connect two rooms in the given n/s/e/w direction
-        '''
-        reverse_dirs = {"n": "s", "s": "n", "e": "w", "w": "e"}
-        reverse_dir = reverse_dirs[direction]
-        setattr(self, f"{direction}_to", connecting_room)
-        setattr(connecting_room, f"{reverse_dir}_to", self)
+#     def connect_rooms(self, connecting_room, direction):
+#         '''
+#         Connect two rooms in the given n/s/e/w direction
+#         '''
+#         reverse_dirs = {"n": "s", "s": "n", "e": "w", "w": "e"}
+#         reverse_dir = reverse_dirs[direction]
+#         setattr(self, f"{direction}_to", connecting_room)
+#         setattr(connecting_room, f"{reverse_dir}_to", self)
         
-    def get_room_in_direction(self, direction):
-        '''
-        Connect two rooms in the given n/s/e/w direction
-        '''
-        return getattr(self, f"{direction}_to")
+#     def get_room_in_direction(self, direction):
+#         '''
+#         Connect two rooms in the given n/s/e/w direction
+#         '''
+#         return getattr(self, f"{direction}_to")
 
 
 class World:
@@ -84,7 +84,7 @@ class World:
             # Create a room in the given direction
             import random
             num = random.choice(range(0,5))
-            room = Room_m(room_count, room_titles[num], room_descriptions[num], x, y)
+            room = Room(room_count, room_titles[num], room_descriptions[num], x, y)
             room.objects.save()
             self.grid[y][x] = room
             if previous_room is not None:
@@ -163,4 +163,4 @@ w.generate_rooms(width, height, num_rooms)
     
 # create_world()
 
-
+# heroku command:  cat util/sample_generator.py | python manage.py shell

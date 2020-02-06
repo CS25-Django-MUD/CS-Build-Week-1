@@ -5,7 +5,6 @@
 # procedural generation algorithm and use print_rooms()
 # to see the world.
 
-
 class Room:
     def __init__(self, id, name, description, x, y):
         self.id = id
@@ -85,7 +84,7 @@ class World:
             room.save()
             self.grid[y][x] = room
             if previous_room is not None:
-                previous_room.connectRooms(room, room_direction)
+                previous_room.connect_rooms(room, room_direction)
             # Update iteration variables
             previous_room = room
             room_count += 1

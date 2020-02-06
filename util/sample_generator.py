@@ -44,56 +44,48 @@ class World:
         self.grid = None
         self.width = 0
         self.height = 0
-
     def generate_rooms(self, size_x, size_y, num_rooms):
-        '''
-        Fill up the grid, bottom to top, in a zig-zag pattern
-        '''
-
         # Initialize the grid
         self.grid = [None] * size_y
         self.width = size_x
         self.height = size_y
-        for i in range( len(self.grid) ):
+        for i in range(len(self.grid)):
             self.grid[i] = [None] * size_x
-
-        # Start from lower-left corner (0,0)
-        x = -1 # (this will become 0 on the first step)
+        x = -5
         y = 0
         room_count = 0
-
         # Start generating rooms to the east
-        direction = 1  # 1: east, -1: west
-
-
+        direction = 1 #1:east, -1:west
         # While there are rooms to be created...
         previous_room = None
+        room_titles = ["Outside Cave Entrance", "Foyer", "Grand Overlook", "Narrow Passage", "Treasure Chamber"]
+        room_descriptions = ["North of you, the cave mount beckons", """Dim light filters in from the south. Dusty
+        passages run north and east.""", """A steep cliff appears before you, falling
+        into the darkness. Ahead to the north, a light flickers in
+        the distance, but there is no way across the chasm.""", """The narrow passage bends here from west
+        to north. The smell of gold permeates the air.""", """You've found the long-lost treasure
+        chamber! Sadly, it has already been completely emptied by
+        earlier adventurers. The only exit is to the south."""]
         while room_count < num_rooms:
-
-            # Calculate the direction of the room to be created
-            if direction > 0 and x < size_x - 1:
+            if direction > 0 and x < size_x - 5:
                 room_direction = "e"
-                x += 1
+                x += 5
             elif direction < 0 and x > 0:
                 room_direction = "w"
-                x -= 1
+                x -= 5
             else:
                 # If we hit a wall, turn north and reverse direction
                 room_direction = "n"
-                y += 1
+                y += 5
                 direction *= -1
-
             # Create a room in the given direction
-            room = Room(room_count, "A Generic Room", "This is a generic room.", x, y)
-            # Note that in Django, you'll need to save the room after you create it
-
-            # Save the room in the World grid
+            import random
+            num = random.choice(range(0,5))
+            room = Room(room_count, room_titles[num], room_descriptions[num], x, y)
+            room.save()
             self.grid[y][x] = room
-
-            # Connect the new room to the previous room
             if previous_room is not None:
-                previous_room.connect_rooms(room, room_direction)
-
+                previous_room.connectRooms(room, room_direction)
             # Update iteration variables
             previous_room = room
             room_count += 1
@@ -155,8 +147,8 @@ class World:
         print(str)
 
 num_rooms = 100
-width = 10
-height = 10
+width = 50
+height = 50
 
 def create_world():
     w = World()

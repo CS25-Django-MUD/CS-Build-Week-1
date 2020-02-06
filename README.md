@@ -1,6 +1,6 @@
 # CS Build Week 1 - Django MUD
 
-[THE MUD](https://cs25-mud.herokuapp.com/)
+## [LINK TO THE MUD](https://cs25-mud.herokuapp.com/)
 
 ## Game Developers 
 |[Michael Chrupcala](https://github.com/mchrupcala)  |  
@@ -26,5 +26,29 @@
 ### Second-step: Explore!
 
 >Use the move buttons to traverse the map and explore the rooms and their hidden content!
+
+
+### API routes
+
+
+## Need to edit FE apis
+
+
+[api/register](https://cs25-mud.herokuapp.com/api/register) : Register username and strong password
+
+
+[api/login](https://cs25-mud.herokuapp.com/api/login) : Login page to get access to play the game
+
+
+[api/init](https://cs25-mud.herokuapp.com/api/init) : Initialize the player on the map
+
+
+[api/move](https://cs25-mud.herokuapp.com/api/move) : API called when clicking a move button to go to the next room
+
+
+[api/adv/rooms](https://cs25-mud.herokuapp.com/api/adv/rooms) : List of all available rooms with Ids, Titles, Descriptions, and coordinates
+
+
+[api/adv/players](https://cs25-mud.herokuapp.com/api/adv/players) : List of all current players and their current rooms
 
 

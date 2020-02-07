@@ -151,8 +151,8 @@ class World:
 
 
 num_rooms = 500
-width = 50
-height = 50
+width = 5
+height = 100
 
 # def create_world():
 w = World()

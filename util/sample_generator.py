@@ -150,7 +150,7 @@ class World:
     #     print(str)
 
 
-num_rooms = 100
+num_rooms = 500
 width = 50
 height = 50
 

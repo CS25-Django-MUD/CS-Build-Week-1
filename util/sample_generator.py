@@ -5,9 +5,13 @@
 # procedural generation algorithm and use print_rooms()
 # to see the world.
 
-import sys
-sys.path.append('../adventure')
-from .adventure import Room as Room_m
+# import sys
+# sys.path.append('../adventure')
+# from .adventure import Room as Room_m
+
+from django.contrib.auth.models import User
+from adventure.models import Player, Room as Room_m
+Room_m.objects.all().delete()
 
 # class Room:
 #     def __init__(self, id, name, description, x, y):
@@ -150,9 +154,9 @@ class World:
     #     print(str)
 
 
-num_rooms = 500
-width = 5
-height = 100
+num_rooms = 100
+width = 50
+height = 50
 
 # def create_world():
 w = World()
